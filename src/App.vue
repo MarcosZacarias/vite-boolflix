@@ -21,14 +21,11 @@ export default {
     fetchCards(endoPoint) {
       axios.get(store.listApi.apiUriMovie + endoPoint).then((response) => {
         console.log(response.data.results);
-        const cardsData = response.data.results.map((card) => {
-          const { original_title, title, original_language, vote_average } =
+        store.movies = response.data.results.map((card) => {
+          const { id, original_title, title, original_language, vote_average } =
             card;
-          return { original_title, title, original_language, vote_average };
+          return { id, original_title, title, original_language, vote_average };
         });
-
-        console.log(cardsData);
-        store.movies = cardsData;
       });
     },
   },

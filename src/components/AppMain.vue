@@ -1,22 +1,22 @@
 <script>
-// import MyComponent from "./components/MyComponent.vue";
+import ListCards from "./Cards/ListCards.vue";
 
 export default {
   data() {
-    return {
-      title: "Hello world",
-    };
+    return {};
   },
 
-  // components: {
-  //   MyComponent,
-  // },
+  components: {
+    ListCards,
+  },
 };
 </script>
 
 <template>
   <main>
-    <div class="container"></div>
+    <div class="container">
+      <ListCards />
+    </div>
   </main>
 </template>
 
@@ -24,5 +24,6 @@ export default {
 main {
   background-color: #434343;
   height: 100vh;
+  color: white;
 }
 </style>
