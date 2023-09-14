@@ -23,7 +23,7 @@ export default {
 <style lang="scss" scoped>
 main {
   background-color: #434343;
-  height: 100vh;
+  min-height: 100vh;
   color: white;
 }
 </style>
