@@ -7,18 +7,36 @@ import AppMain from "./components/AppMain.vue";
 
 export default {
   data() {
-    return {};
+    return {
+      store,
+    };
   },
 
   components: {
     AppHeader,
     AppMain,
   },
+
+  methods: {
+    fetchCards(endoPoint) {
+      axios.get(store.listApi.apiUriMovie + endoPoint).then((response) => {
+        console.log(response.data.results);
+        const cardsData = response.data.results.map((card) => {
+          const { original_title, title, original_language, vote_average } =
+            card;
+          return { original_title, title, original_language, vote_average };
+        });
+
+        console.log(cardsData);
+        store.movies = cardsData;
+      });
+    },
+  },
 };
 </script>
 
 <template>
-  <AppHeader />
+  <AppHeader @form-submit="fetchCards" />
   <AppMain />
 </template>
 
