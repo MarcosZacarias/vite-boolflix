@@ -15,7 +15,14 @@ export default {
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
+  <main>
+    <div class="container"></div>
+  </main>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+main {
+  background-color: #434343;
+  height: 100vh;
+}
+</style>
