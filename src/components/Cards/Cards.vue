@@ -26,11 +26,17 @@ export default {
 
 <template>
   <ul>
+    <li><img :src="card.poster_path" alt="" /></li>
     <li>Titolo: {{ card.title }}</li>
     <li>Titolo Originale: {{ card.original_title }}</li>
     <li>
       <span>Lingua: </span>
-      <img v-if="card.original_language" :src="card.original_language" alt="" />
+      <img
+        v-if="card.original_language"
+        :src="card.original_language"
+        alt=""
+        class="flag-language"
+      />
       <span v-else>not found</span>
     </li>
     <li>Voto: {{ card.vote_average }}</li>
@@ -38,7 +44,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-img {
+.flag-language {
   width: 2rem;
   height: 1rem;
 }

@@ -40,6 +40,7 @@ export default {
               title,
               original_language,
               vote_average,
+              poster_path,
             } = card;
 
             return {
@@ -48,6 +49,7 @@ export default {
               title,
               original_language: this.flags(original_language),
               vote_average,
+              poster_path: "https://image.tmdb.org/t/p/w342" + poster_path,
             };
           });
         });
@@ -64,8 +66,14 @@ export default {
         .then((response) => {
           console.log(response.data.results);
           store.series = response.data.results.map((card) => {
-            const { id, original_name, name, original_language, vote_average } =
-              card;
+            const {
+              id,
+              original_name,
+              name,
+              original_language,
+              vote_average,
+              poster_path,
+            } = card;
 
             return {
               id,
@@ -73,6 +81,7 @@ export default {
               title: name,
               original_language: this.flags(original_language),
               vote_average,
+              poster_path: "https://image.tmdb.org/t/p/w342" + poster_path,
             };
           });
         });
