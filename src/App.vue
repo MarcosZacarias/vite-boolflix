@@ -18,15 +18,33 @@ export default {
   },
 
   methods: {
-    fetchCards(endoPoint) {
-      axios.get(store.listApi.apiUriMovie + endoPoint).then((response) => {
-        console.log(response.data.results);
-        store.movies = response.data.results.map((card) => {
-          const { id, original_title, title, original_language, vote_average } =
-            card;
-          return { id, original_title, title, original_language, vote_average };
+    fetchCards(queryString) {
+      axios
+        .get(store.listApi.apiUriMovie, {
+          params: {
+            query: queryString,
+            api_key: store.apiKey,
+          },
+        })
+        .then((response) => {
+          console.log(response.data.results);
+          store.movies = response.data.results.map((card) => {
+            const {
+              id,
+              original_title,
+              title,
+              original_language,
+              vote_average,
+            } = card;
+            return {
+              id,
+              original_title,
+              title,
+              original_language,
+              vote_average,
+            };
+          });
         });
-      });
     },
   },
 };
