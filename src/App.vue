@@ -36,15 +36,26 @@ export default {
               original_language,
               vote_average,
             } = card;
+
             return {
               id,
               original_title,
               title,
-              original_language,
+              original_language: this.flags(original_language),
               vote_average,
             };
           });
         });
+    },
+
+    flags(language) {
+      let flag;
+      if (language == "it" || language == "en") {
+        flag = "../public/img/flags/" + language + ".png";
+      } else {
+        flag = false;
+      }
+      return flag;
     },
   },
 };
