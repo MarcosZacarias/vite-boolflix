@@ -26,13 +26,14 @@ export default {
 
 <template>
   <ul>
-    <li>{{ card.title }}</li>
-    <li>{{ card.original_title }}</li>
+    <li>Titolo: {{ card.title }}</li>
+    <li>Titolo Originale: {{ card.original_title }}</li>
     <li>
+      <span>Lingua: </span>
       <img v-if="card.original_language" :src="card.original_language" alt="" />
       <span v-else>not found</span>
     </li>
-    <li>{{ card.vote_average }}</li>
+    <li>Voto: {{ card.vote_average }}</li>
   </ul>
 </template>
 
