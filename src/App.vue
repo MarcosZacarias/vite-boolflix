@@ -48,7 +48,7 @@ export default {
               original_title,
               title,
               original_language: this.flags(original_language),
-              vote_average,
+              vote_average: Math.ceil(vote_average / 2),
               poster_path: "https://image.tmdb.org/t/p/w342" + poster_path,
             };
           });
@@ -80,7 +80,7 @@ export default {
               original_title: original_name,
               title: name,
               original_language: this.flags(original_language),
-              vote_average,
+              vote_average: Math.ceil(vote_average / 2),
               poster_path: "https://image.tmdb.org/t/p/w342" + poster_path,
             };
           });

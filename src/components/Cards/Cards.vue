@@ -4,7 +4,7 @@
 export default {
   data() {
     return {
-      title: "Hello world",
+      voteStars: [],
     };
   },
 
@@ -39,7 +39,22 @@ export default {
       />
       <span v-else>not found</span>
     </li>
-    <li>Voto: {{ card.vote_average }}</li>
+    <li>
+      Voto: Stelle
+      <span class="full-star">
+        <font-awesome-icon
+          v-for="n in card.vote_average"
+          icon="fa-solid fa-star"
+          inverse
+        />
+      </span>
+      <span class="void-star">
+        <font-awesome-icon
+          v-for="n in 5 - card.vote_average"
+          icon="fa-regular fa-star"
+        />
+      </span>
+    </li>
   </ul>
 </template>
 
