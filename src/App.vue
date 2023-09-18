@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import { store } from "../src/data/store";
+import { api, languages } from "./data/dataStatic";
 
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
@@ -26,10 +27,10 @@ export default {
 
     fetchCardsMovie(queryString) {
       axios
-        .get(store.listApi.apiUriMovie, {
+        .get(api.listApi.apiUriMovie, {
           params: {
             query: queryString,
-            api_key: store.apiKey,
+            api_key: api.apiKey,
           },
         })
         .then((response) => {
@@ -50,7 +51,7 @@ export default {
               title,
               original_language: this.flags(original_language),
               vote_average: Math.ceil(vote_average / 2),
-              poster_path: "https://image.tmdb.org/t/p/w342" + poster_path,
+              poster_path,
             };
           });
         });
@@ -58,10 +59,10 @@ export default {
 
     fetchCardsSeries(queryString) {
       axios
-        .get(store.listApi.apiUriSeries, {
+        .get(api.listApi.apiUriSeries, {
           params: {
             query: queryString,
-            api_key: store.apiKey,
+            api_key: api.apiKey,
           },
         })
         .then((response) => {
@@ -82,7 +83,7 @@ export default {
               title: name,
               original_language: this.flags(original_language),
               vote_average: Math.ceil(vote_average / 2),
-              poster_path: "https://image.tmdb.org/t/p/w342" + poster_path,
+              poster_path,
             };
           });
         });
@@ -90,13 +91,15 @@ export default {
 
     flags(language) {
       let flag;
-      if (language == "it" || language == "en") {
+      if (languages.includes(language)) {
         flag = "../public/img/flags/" + language + ".png";
       } else {
         flag = false;
       }
       return flag;
     },
+
+    posterPath() {},
   },
 };
 </script>

@@ -1,5 +1,6 @@
 <script>
 // import MyComponent from "./components/MyComponent.vue";
+import { poster } from "../../data/dataStatic";
 
 export default {
   data() {
@@ -21,6 +22,14 @@ export default {
       console.log("ciao");
     },
   },
+
+  computed: {
+    posterSrc() {
+      if (!this.card.poster_path)
+        return `../../../public/img/poster/no-poster.png`;
+      return `${poster.baseUrl}${poster.size}${this.card.poster_path}`;
+    },
+  },
 };
 </script>
 
@@ -29,21 +38,15 @@ export default {
     <div class="card-film">
       <ul class="card-media">
         <li class="film-poster">
-          <img :src="card.poster_path" alt="" />
+          <img :src="posterSrc" alt="" />
         </li>
       </ul>
       <ul class="card-text">
         <li><strong>Titolo: </strong>{{ card.title }}</li>
         <li><strong>Titolo Originale: </strong> {{ card.original_title }}</li>
-        <li>
+        <li v-if="card.original_language">
           <span><strong>Lingua: </strong> </span>
-          <img
-            v-if="card.original_language"
-            :src="card.original_language"
-            alt=""
-            class="flag-language"
-          />
-          <span v-else>not found</span>
+          <img :src="card.original_language" alt="" class="flag-language" />
         </li>
         <li>
           <strong>Voto: </strong>
