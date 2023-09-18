@@ -98,8 +98,6 @@ export default {
       }
       return flag;
     },
-
-    posterPath() {},
   },
 };
 </script>

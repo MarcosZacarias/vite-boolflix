@@ -18,8 +18,10 @@ export default {
   //   MyComponent,
   // },
   methods: {
-    printHello() {
-      console.log("ciao");
+    printStars(n) {
+      return n < this.card.vote_average
+        ? `fa-solid fa-star`
+        : `fa-regular fa-star`;
     },
   },
 
@@ -51,17 +53,7 @@ export default {
         <li>
           <strong>Voto: </strong>
           <span class="full-star">
-            <font-awesome-icon
-              v-for="n in card.vote_average"
-              icon="fa-solid fa-star"
-              inverse
-            />
-          </span>
-          <span class="void-star">
-            <font-awesome-icon
-              v-for="n in 5 - card.vote_average"
-              icon="fa-regular fa-star"
-            />
+            <font-awesome-icon v-for="n in 5" :icon="printStars(n)" />
           </span>
         </li>
       </ul>
