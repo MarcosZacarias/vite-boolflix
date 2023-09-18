@@ -21,6 +21,7 @@ export default {
     fetchCards(textSearch) {
       this.fetchCardsMovie(textSearch);
       this.fetchCardsSeries(textSearch);
+      store.searchFilm = true;
     },
 
     fetchCardsMovie(queryString) {

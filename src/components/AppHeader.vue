@@ -18,9 +18,11 @@ export default {
 
 <template>
   <header class="d-flex justify-content-between p-2">
-    <div class="logo"></div>
+    <div class="logo">
+      <img src="../../public/img/logo/580b57fcd9996e24bc43c529.png" alt="" />
+    </div>
     <div class="input-group mb-3 w-25">
-      <nav class="navbar bg-light">
+      <nav class="navbar">
         <div class="container-fluid">
           <form
             @submit.prevent="$emit(`form-submit`, textSearch)"
@@ -48,8 +50,11 @@ export default {
 header {
   background-color: black;
   .logo {
-    width: 100px;
-    background-color: red;
+    width: 200px;
+    // background-color: red;
+    img {
+      width: 100%;
+    }
   }
 }
 </style>
